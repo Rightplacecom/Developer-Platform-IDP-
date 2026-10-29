@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Internal Developer Platform (IDP)
 
 **Build. Deploy. Observe. Scale.**
@@ -54,3 +55,6 @@ See the documents in [docs/](docs/) for architecture, API, security, and operati
 ## Production Note
 
 Authentication, persistent deployment state, real Kubernetes client integration, centralized logging, image digest enforcement, and an external secrets solution are required before production use.
+=======
+# Developer-Platform-IDP-
+>>>>>>> 2f530822f5a8e15318a5e2627938ae86ae7dfb31
