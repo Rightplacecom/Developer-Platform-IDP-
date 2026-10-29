@@ -1,0 +1,8 @@
+services:
+  control-plane:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      IDP_ENVIRONMENT: dev
+      IDP_NAMESPACE: idp-dev

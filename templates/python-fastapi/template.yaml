@@ -1,0 +1,15 @@
+name: python-fastapi
+version: "1.0.0"
+description: Standard Python API service
+defaults:
+  port: 8000
+  replicas: 2
+  resources:
+    cpu_request: 100m
+    cpu_limit: 500m
+    memory_request: 128Mi
+    memory_limit: 512Mi
+required_fields:
+  - service_name
+  - owner
+  - image

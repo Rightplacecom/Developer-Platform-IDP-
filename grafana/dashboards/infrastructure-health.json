@@ -1,0 +1,14 @@
+{
+  "annotations":{"list":[]},"editable":true,"graphTooltip":1,
+  "panels":[
+    {"type":"timeseries","title":"Host CPU Utilization","gridPos":{"h":8,"w":12,"x":0,"y":0},"targets":[{"expr":"100*(1-avg by(instance)(rate(node_cpu_seconds_total{mode=\"idle\"}[5m])))","legendFormat":"CPU"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},
+    {"type":"timeseries","title":"Host Memory Utilization","gridPos":{"h":8,"w":12,"x":12,"y":0},"targets":[{"expr":"100*(1-node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes)","legendFormat":"memory used"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},
+    {"type":"timeseries","title":"Filesystem Usage","gridPos":{"h":8,"w":12,"x":0,"y":8},"targets":[{"expr":"100*(1-node_filesystem_avail_bytes{fstype!~\"tmpfs\"}/node_filesystem_size_bytes{fstype!~\"tmpfs\"})","legendFormat":"{{mountpoint}}"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},
+    {"type":"timeseries","title":"Network Throughput","gridPos":{"h":8,"w":12,"x":12,"y":8},"targets":[{"expr":"rate(node_network_receive_bytes_total[5m])","legendFormat":"receive {{device}}"},{"expr":"rate(node_network_transmit_bytes_total[5m])","legendFormat":"transmit {{device}}"}],"fieldConfig":{"defaults":{"unit":"Bps"}}},
+    {"type":"timeseries","title":"Container CPU Usage","gridPos":{"h":8,"w":12,"x":0,"y":16},"targets":[{"expr":"sum by(name)(rate(container_cpu_usage_seconds_total{name!=\"\"}[5m]))","legendFormat":"{{name}}"}]},
+    {"type":"timeseries","title":"Container Memory Usage","gridPos":{"h":8,"w":12,"x":12,"y":16},"targets":[{"expr":"sum by(name)(container_memory_usage_bytes{name!=\"\"})","legendFormat":"{{name}}"}],"fieldConfig":{"defaults":{"unit":"bytes"}}},
+    {"type":"stat","title":"Running Containers","gridPos":{"h":8,"w":12,"x":0,"y":24},"targets":[{"expr":"count(container_last_seen{name!=\"\"})","legendFormat":"containers"}]},
+    {"type":"stat","title":"Scrape Targets Up","gridPos":{"h":8,"w":12,"x":12,"y":24},"targets":[{"expr":"sum(up)","legendFormat":"targets"}]}
+  ],
+  "schemaVersion":39,"tags":["observability","infrastructure"],"title":"Infrastructure Health","uid":"infrastructure-health","version":1
+}
